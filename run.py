@@ -32,5 +32,6 @@ if __name__ == "__main__":
         text_message=f"\n{time}\nIt's time to stretch!" # Leading newline strips extra text from SMS.
     
     #text_message="\nIt's time to stretch! Another message will be coming at " + time + "."    
+    print(f"{time}: Sending SMS to {TARGET_PHONE}: {text_message}")
     SMS.send(EMAIL_ADDR, EMAIL_PASS, TARGET_PHONE, TARGET_PHONE_CARRIER, text_message)
-    print("Complete")
+    print("Complete!")
