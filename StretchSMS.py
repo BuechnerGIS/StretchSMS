@@ -1,5 +1,5 @@
 import smtplib
-carriers = {
+CARRIERS = {
         'att': '@mms.att.net',
         'tmobile': '@tmomail.net',
         'verizon': '@vtext.com',
@@ -23,5 +23,5 @@ def send(email_acc, email_pw, target_phone, carrier, message):
     server.sendmail(auth[0], to_number, message)
 
 def validate_carrier(carrier):
-    if carrier not in carriers.keys():
+    if carrier not in CARRIERS.keys():
         raise ValueError(f"Carrier \"{carrier}\" not supported!")
