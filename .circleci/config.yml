@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     environment:
-      IMAGE_NAME: ${DOCKERHUB_USERNAME}/stretchsms
+      IMAGE_NAME: stretchsms
     docker:
       - image: cimg/python:3.8
     steps:
@@ -26,9 +26,9 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t "$IMAGE_NAME":<< pipeline.git.branch >> .
-            docker tag stretchsms "$IMAGE_NAME":<< pipeline.git.branch >>
-            docker push "$IMAGE_NAME":<< pipeline.git.branch >>
+            docker build -t "$DOCKERHUB_USERNAME"/"$IMAGE_NAME":<< pipeline.git.branch >> .
+            docker tag stretchsms "$DOCKERHUB_USERNAME"/"$IMAGE_NAME":<< pipeline.git.branch >>
+            docker push "$DOCKERHUB_USERNAME"/"$IMAGE_NAME":<< pipeline.git.branch >>
 workflows:
   version: 2.1
   build-main:
