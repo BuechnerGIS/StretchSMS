@@ -42,5 +42,5 @@ jobs:
           command: pytest
       - run:
           # TODO: make this a debug mode run
-          name: Run StretchSM
+          name: Run StretchSMS
           command: python3 run.py
