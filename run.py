@@ -17,8 +17,7 @@ def parse_args():
 
     # Execute the parse_args() method
     return my_parser.parse_args()
-
-input_path = args.Path
+    
 
 if __name__ == "__main__":
     #Parse Args and get timestamp
