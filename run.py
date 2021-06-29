@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     # Format message depending on runtype
     if args.debug:
-        text_message="\nDebug message from StretchSMS at {time}" # Leading newline strips extra text from SMS.
+        text_message=f"\nDebug message from StretchSMS at {time}" # Leading newline strips extra text from SMS.
     else:
         text_message="\nIt's time to stretch!" # Leading newline strips extra text from SMS.
     
