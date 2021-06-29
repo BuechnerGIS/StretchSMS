@@ -14,7 +14,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Argument Parsing for StretchSMS')
 
     # Add the arguments
-    parser.add_argument('d', '--debug', dest='debug', action='store_true')
+    parser.add_argument('-d', dest='debug', action='store_true')
 
     # Execute the parse_args() method
     return parser.parse_args()
