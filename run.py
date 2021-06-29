@@ -11,18 +11,18 @@ TARGET_PHONE_CARRIER=os.environ.get("SMS_TARGET_PHONE_CARRIER").lower()
 
 
 def parse_args():
-    my_parser = argparse.ArgumentParser(description='Argument Parsing for StretchSMS')
+    parser = argparse.ArgumentParser(description='Argument Parsing for StretchSMS')
 
     # Add the arguments
     parser.add_argument('d', '--debug', dest='debug', action='store_true')
 
     # Execute the parse_args() method
-    return my_parser.parse_args()
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
-    #Parse Args and get timestamp
-    args=parse_args()
+    # Parse Args and get timestamp
+    args = parse_args()
     time = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
 
     # Format message depending on runtype
