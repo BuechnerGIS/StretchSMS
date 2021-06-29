@@ -1,5 +1,5 @@
 import smtplib
-carriers = {
+CARRIERS = {
         'att': '@mms.att.net',
         'tmobile': '@tmomail.net',
         'verizon': '@vtext.com',
@@ -11,7 +11,7 @@ def send(email_acc, email_pw, target_phone, carrier, message):
     validate_carrier(carrier)
 
     # Replace the number with your own, or consider using an argument\dict for multiple people.
-    to_number = f'{target_phone}{carriers[carrier]}'
+    to_number = f'{target_phone}{CARRIERS[carrier]}'
     auth = (email_acc, email_pw)
 
     # Establish a secure session with gmail's outgoing SMTP server using your gmail account
@@ -23,5 +23,5 @@ def send(email_acc, email_pw, target_phone, carrier, message):
     server.sendmail(auth[0], to_number, message)
 
 def validate_carrier(carrier):
-    if carrier not in carriers.keys():
+    if carrier not in CARRIERS.keys():
         raise ValueError(f"Carrier \"{carrier}\" not supported!")
