@@ -11,7 +11,7 @@ def send(email_acc, email_pw, target_phone, carrier, message):
     validate_carrier(carrier)
 
     # Replace the number with your own, or consider using an argument\dict for multiple people.
-    to_number = f'{target_phone}{carriers[carrier]}'
+    to_number = f'{target_phone}{CARRIERS[carrier]}'
     auth = (email_acc, email_pw)
 
     # Establish a secure session with gmail's outgoing SMTP server using your gmail account
