@@ -23,14 +23,15 @@ def parse_args():
 if __name__ == "__main__":
     # Parse Args and get timestamp
     args = parse_args()
-    time = str(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+    time = str(datetime.now().strftime("%I:%M:%S %p"))
 
     # Format message depending on runtype
     if args.debug:
-        text_message=f"\nDebug message from StretchSMS at {time}" # Leading newline strips extra text from SMS.
+        text_message=f"\n{time}\nDebug message from StretchSMS." # Leading newline strips extra text from SMS.
     else:
-        text_message="\nIt's time to stretch!" # Leading newline strips extra text from SMS.
+        text_message=f"\n{time}\nIt's time to stretch!" # Leading newline strips extra text from SMS.
     
     #text_message="\nIt's time to stretch! Another message will be coming at " + time + "."    
+    print(f"{time}: Sending SMS to {TARGET_PHONE}: {text_message}")
     SMS.send(EMAIL_ADDR, EMAIL_PASS, TARGET_PHONE, TARGET_PHONE_CARRIER, text_message)
-    print("Complete")
+    print("Complete!")
