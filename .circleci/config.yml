@@ -40,3 +40,7 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
+      - run:
+          # TODO: make this a debug mode run
+          name: Run StretchSM
+          command: python3 run.py
