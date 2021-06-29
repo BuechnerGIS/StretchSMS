@@ -43,4 +43,4 @@ jobs:
       - run:
           # TODO: make this a debug mode run
           name: Run StretchSMS
-          command: python3 run.py
+          command: python3 run.py -d
