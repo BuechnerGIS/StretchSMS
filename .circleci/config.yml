@@ -22,14 +22,6 @@ jobs:
       - run:
           name: Run StretchSMS (Debug mode)
           command: python3 run.py -d
-  publish-latest:
-    resource_class: small
-    environment:
-      IMAGE_NAME: stretchsms
-    docker:
-      - image: cimg/python:3.8
-    steps:
-      - setup_remote_docker
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
@@ -37,15 +29,11 @@ jobs:
             docker build -t $IMAGE_NAME:<< pipeline.git.branch >> .
             docker tag stretchsms $IMAGE_NAME:<< pipeline.git.branch >>
             docker push $IMAGE_NAME/stretchsms:<< pipeline.git.branch >>
-
 workflows:
   version: 2.1
   build-main:
     jobs:
       - build
-      - publish-latest:
-          requires:
-            - build
 
 #workflows:
 #  version: 2.1
