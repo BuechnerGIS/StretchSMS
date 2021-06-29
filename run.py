@@ -2,6 +2,7 @@ import os
 import StretchSMS as SMS
 import time
 from datetime import datetime
+import argparse
 
 EMAIL_ADDR=os.environ.get("SMS_EMAIL_ACCOUNT").lower()
 EMAIL_PASS=os.environ.get("SMS_EMAIL_PASSWORD")
@@ -17,7 +18,7 @@ def parse_args():
 
     # Execute the parse_args() method
     return my_parser.parse_args()
-    
+
 
 if __name__ == "__main__":
     #Parse Args and get timestamp
