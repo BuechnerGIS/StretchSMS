@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     environment:
-      IMAGE_NAME: $DOCKERHUB_USERNAME/stretchsms
+      IMAGE_NAME: ${DOCKERHUB_USERNAME}/stretchsms
     docker:
       - image: cimg/python:3.8
     steps:
