@@ -14,9 +14,6 @@ RUN apk add tzdata && \
 RUN mkdir /stretchsms
 WORKDIR /stretchsms 
 
-# Copy files into working dir
-COPY . /stretchsms
-
 # Run the cron At minute 15 past every hour from 8-16.
 RUN echo '15       8-16       *       *       *       /stretchsms/startup.sh' >> /etc/crontabs/root
 
