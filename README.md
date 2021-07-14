@@ -6,12 +6,6 @@ Successful builds are posted up to [StretchSMS DockerHub](https://hub.docker.com
 
 ## Quick Start (docker-compose)
 ```
-docker-compose build
-docker-compose up
-```
-## Quick Start (docker)
-```
-# Make sure to fill out .env file before proceeding..
-docker build -t stretchsms .
-docker run -it --env-file=.env stretchsms
+docker-compose build stretchsms
+docker-compose up -d stretchsms
 ```
