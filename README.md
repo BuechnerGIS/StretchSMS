@@ -9,3 +9,6 @@ Successful builds are posted up to [StretchSMS DockerHub](https://hub.docker.com
 docker-compose build stretchsms
 docker-compose up -d stretchsms
 ```
+# If installing on ARM!
+Ensure `libseccomp` package is > v1.2. Can be downloaded from here https://packages.debian.org/sid/libseccomp2 (armhf).
+Without this, docker containers will not be able to use host network.
