@@ -5,7 +5,7 @@ services:
         image: stretchsms:latest
         build:
             context: .
-            dockerfile: ./docker/Dockerfile
+            dockerfile: ./Dockerfile
         env_file:
             - .env
         volumes: 
@@ -13,18 +13,4 @@ services:
               source: ./
               target: /stretchsms/
         command: crond -f -l 8
-
-    stretchsms-rpi:
-        image: stretchsms:latest
-        build:
-            context: .
-            dockerfile: ./docker/Dockerfile.rpi
-        env_file:
-            - .env
-        volumes:
-            - type: bind
-              source: ./
-              target: /stretchsms/
-        command: crond -f -l 8
-
 
