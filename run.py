@@ -6,8 +6,8 @@ import argparse
 
 EMAIL_ADDR=os.environ.get("SMS_EMAIL_ACCOUNT").lower()
 EMAIL_PASS=os.environ.get("SMS_EMAIL_PASSWORD")
-TARGET_PHONE=os.environ.get("SMS_TARGET_PHONE")
-TARGET_PHONE_CARRIER=os.environ.get("SMS_TARGET_PHONE_CARRIER").lower()
+TARGET_PHONE=os.environ.get("SMS_TARGET_PHONE").split(" ")
+TARGET_PHONE_CARRIER=os.environ.get("SMS_TARGET_PHONE_CARRIER").lower().split(" ")
 
 
 def parse_args():
@@ -30,8 +30,12 @@ if __name__ == "__main__":
         text_message=f"\n{time}\nDebug message from StretchSMS." # Leading newline strips extra text from SMS.
     else:
         text_message=f"\n{time}\nIt's time to stretch!" # Leading newline strips extra text from SMS.
+       
+    # Send messages to all phones listed in .env
+    for i in range(0, len(TARGET_PHONE)):
+        phone=TARGET_PHONE[i]
+        carrier=TARGET_PHONE_CARRIER[i]
+        print(f"{time}: Sending SMS to {phone}: {text_message}")
+        SMS.send(EMAIL_ADDR, EMAIL_PASS, phone, carrier, text_message)
     
-    #text_message="\nIt's time to stretch! Another message will be coming at " + time + "."    
-    print(f"{time}: Sending SMS to {TARGET_PHONE}: {text_message}")
-    SMS.send(EMAIL_ADDR, EMAIL_PASS, TARGET_PHONE, TARGET_PHONE_CARRIER, text_message)
     print("Complete!")
