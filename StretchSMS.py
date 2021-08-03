@@ -6,6 +6,15 @@ CARRIERS = {
         'sprint': '@page.nextel.com'
 }
 
+EXERCISES = {
+    "Overhead Stretch": 10,
+    "Twist": 15,
+    "Push-up": 10,
+    "Curl": 10,
+    "Chest Press": 10
+}
+
+
 def send(email_acc, email_pw, target_phone, carrier, message):
     # Ensure a supported carrier was provided
     validate_carrier(carrier)
