@@ -3,12 +3,19 @@ import StretchSMS as SMS
 import time
 from datetime import datetime
 import argparse
+from random import randrange
 
 EMAIL_ADDR=os.environ.get("SMS_EMAIL_ACCOUNT").lower()
 EMAIL_PASS=os.environ.get("SMS_EMAIL_PASSWORD")
 TARGET_PHONE=os.environ.get("SMS_TARGET_PHONE").split(" ")
 TARGET_PHONE_CARRIER=os.environ.get("SMS_TARGET_PHONE_CARRIER").lower().split(" ")
 
+def get_exercise():
+    exercises = list(SMS.EXERCISES.keys())
+    idx = randrange(len(exercises))
+    exercise = exercises[idx]
+    reps = SMS.EXERCISES[exercise]
+    return (exercise, reps)
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Argument Parsing for StretchSMS')
@@ -28,8 +35,10 @@ if __name__ == "__main__":
     # Format message depending on runtype
     if args.debug:
         text_message=f"\n{time}\nDebug message from StretchSMS." # Leading newline strips extra text from SMS.
+
     else:
-        text_message=f"\n{time}\nIt's time to stretch!" # Leading newline strips extra text from SMS.
+        ex, reps = get_exercise()
+        text_message=f"\n{time}\nIt's time to stretch!\nDo {reps} {ex}(s)!" # Leading newline strips extra text from SMS.
        
     # Send messages to all phones listed in .env
     for i in range(0, len(TARGET_PHONE)):
